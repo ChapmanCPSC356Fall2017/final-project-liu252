@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_add_list"
+        android:icon="@drawable/add_button"
+        android:title="addList"
+        app:showAsAction="ifRoom|withText"
+        />
+    <item
+        android:id="@+id/menu_randomize"
+        android:title="Randomize"
+        />
+
+</menu>
