@@ -48,20 +48,19 @@ public class AddRestaurantFragment extends Fragment
                     {
                         RestaurantDetails newRestaurant = new RestaurantDetails();
                         newRestaurant.setRestaurantName(newName.getText().toString());
-//
-                        if(newRating.getText().toString().equals(null))
+
+                        if(newRating.getText().toString().equals(""))
                         {
                             newRestaurant.setRestaurantRating(0.0);
                         }
                         else
                         {
-                        newRestaurant.setRestaurantRating(Double.parseDouble((newRating.getText().toString())));
+                            newRestaurant.setRestaurantRating(Double.parseDouble((newRating.getText().toString())));
                         }
                         newRestaurant.setRestaurantLocation(newAddress.getText().toString());
                         newRestaurant.setRestaurantDetails(newDetails.getText().toString());
-
                         RestaurantCollection.getInstance().addRestaurant(newRestaurant);
-
+                        RestaurantCollection.restaurantCount++;
                         Intent intent = new Intent(view.getContext(),RestaurantSelectionActivity.class);
                         startActivity(intent);
 

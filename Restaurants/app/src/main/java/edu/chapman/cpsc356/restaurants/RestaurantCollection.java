@@ -11,6 +11,8 @@ public class RestaurantCollection
     {
         public static RestaurantCollection collection;
 
+        public static int restaurantCount = 0;
+
         public static RestaurantCollection getInstance()
         {
             if (collection == null)
@@ -34,8 +36,10 @@ public class RestaurantCollection
             r1.setRestaurantRating(4.0);
             r1.setRestaurantLocation("Somewhere on Chapman Avenue");
             r1.setRestaurantDetails("Its pretty good");
+            restaurantCount++;
 
             l1.getRestaurants().add(r1);
+
 
             RestaurantDetails r2 = new RestaurantDetails();
             r2.setRestaurantName("Class 302");
@@ -44,6 +48,7 @@ public class RestaurantCollection
             r2.setRestaurantDetails("Self Serve Boba");
 
             l1.getRestaurants().add(r2);
+            restaurantCount++;
 
             restaurants.add(l1);
 
@@ -52,6 +57,7 @@ public class RestaurantCollection
             List.setListName("Please work");
             RestaurantDetails Restaurant = new RestaurantDetails();
             Restaurant.setRestaurantDetails("I wish this wont replace the first list");
+            restaurantCount++;
 
             List.getRestaurants().add(Restaurant);
 
@@ -90,7 +96,7 @@ public class RestaurantCollection
 
         public RestaurantDetails getRestaurant(int previous, int current)
         {
-            return this.restaurants.get(previous).getRetauarnt(current);
+            return this.restaurants.get(previous).getRestaurant(current);
         }
 
         public RestaurantList getRestaurants(String id)

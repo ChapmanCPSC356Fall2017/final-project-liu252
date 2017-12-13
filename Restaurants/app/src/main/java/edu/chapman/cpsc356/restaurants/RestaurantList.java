@@ -32,7 +32,7 @@ public class RestaurantList
             return restaurants;
         }
 
-        public RestaurantDetails getRetauarnt(int position)
+        public RestaurantDetails getRestaurant(int position)
         {
             return this.restaurants.get(position);
         }

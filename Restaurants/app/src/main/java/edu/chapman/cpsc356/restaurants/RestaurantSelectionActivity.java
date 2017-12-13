@@ -7,6 +7,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import java.util.Random;
+
 /**
  * Created by dusti on 12/9/2017.
  */
@@ -30,7 +32,7 @@ public class RestaurantSelectionActivity extends MainActivity
         public boolean onCreateOptionsMenu(Menu menu)
         {
             MenuInflater inflater = getMenuInflater();
-            inflater.inflate(R.menu.add_menu,menu);
+            inflater.inflate(R.menu.add_and_randomize_menu,menu);
 
             return super.onCreateOptionsMenu(menu);
         }
@@ -40,9 +42,18 @@ public class RestaurantSelectionActivity extends MainActivity
         {
             switch(item.getItemId())
             {
-                case R.id.menu_add_restaurant:
+                case R.id.menu_add_list:
                     Intent intent = new Intent(this, AddRestaurantActivity.class);
                     startActivity(intent);
+                    return true;
+
+                case R.id.menu_randomize:
+                    Random randomRestaurantNumber = new Random();
+                    RestaurantSelectionAdapter.CURRENT_POSITION =  randomRestaurantNumber.nextInt(RestaurantCollection.getInstance().getRestaurant(RestaurantSelectionAdapter.PREVIOUS_POSITION).size());;
+
+                    Intent randomIntent = new Intent(this, RestaurantActivity.class);
+                    startActivity(randomIntent);
+                    return true;
 
                 default:
                     return false;
