@@ -49,7 +49,7 @@ public class AddRestaurantFragment extends Fragment
                         RestaurantDetails newRestaurant = new RestaurantDetails();
                         newRestaurant.setRestaurantName(newName.getText().toString());
 
-                        if(newRating.getText().toString().equals(""))
+                        if(newRating.getText().toString().equals("")||newRating.getText().toString().equals("."))
                         {
                             newRestaurant.setRestaurantRating(0.0);
                         }
