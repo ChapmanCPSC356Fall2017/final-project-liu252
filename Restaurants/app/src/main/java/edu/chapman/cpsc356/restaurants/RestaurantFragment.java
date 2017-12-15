@@ -22,6 +22,8 @@ public class RestaurantFragment extends Fragment
         private EditText restaurantAddress;
         private EditText restaurantDetails;
 
+        public static boolean searchMode;
+
         private RestaurantDetails restaurant;
 
         public RestaurantFragment()
@@ -33,8 +35,16 @@ public class RestaurantFragment extends Fragment
         public void onCreate(@Nullable Bundle savedInstanceState)
         {
             super.onCreate(savedInstanceState);
+            if (!searchMode)
+            {
+                this.restaurant = RestaurantCollection.getInstance().getRestaurant(RestaurantSelectionAdapter.PREVIOUS_POSITION, RestaurantSelectionAdapter.CURRENT_POSITION);
 
-            this.restaurant = RestaurantCollection.getInstance().getRestaurant(RestaurantSelectionAdapter.PREVIOUS_POSITION, RestaurantSelectionAdapter.CURRENT_POSITION);
+            }
+            else
+            {
+                this.restaurant = RestaurantCollection.getInstance().searchRestaurants().get(SearchAdapter.SEARCH_POSITION);
+                searchMode = false;
+            }
         }
 
         @Override

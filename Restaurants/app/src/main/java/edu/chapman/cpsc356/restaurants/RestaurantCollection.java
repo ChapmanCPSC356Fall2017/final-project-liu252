@@ -1,5 +1,10 @@
 package edu.chapman.cpsc356.restaurants;
 
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+
+import com.google.gson.Gson;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +17,7 @@ public class RestaurantCollection
         public static RestaurantCollection collection;
 
         public static int restaurantCount = 0;
+        public static String searchedText;
 
         public static RestaurantCollection getInstance()
         {
@@ -63,7 +69,6 @@ public class RestaurantCollection
 
 
             restaurants.add(List);
-
 
         }
 
@@ -122,6 +127,29 @@ public class RestaurantCollection
             this.restaurants.get(oldPosition).getRestaurants().remove(currentPosition);
         }
 
+        public List<RestaurantDetails> searchRestaurants()
+        {
+            List<RestaurantDetails> search = new ArrayList<>();
+
+            for(RestaurantList list : restaurants)
+            {
+                for(RestaurantDetails details : list.getRestaurants())
+                {
+                    if(!(details.getRestaurantName().equals("")))
+                    {
+                       if(details.getRestaurantName().toLowerCase().contains(searchedText))
+                       {
+                           search.add(details);
+                       }
+                    }
+                }
+            }
+
+            return search;
+
+
+
+        }
 
         public RestaurantDetails getRestaurant(String id1, String id2)
         {

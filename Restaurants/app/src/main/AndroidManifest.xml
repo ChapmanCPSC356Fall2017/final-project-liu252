@@ -18,6 +18,7 @@
         </activity>
         <activity android:name=".RestaurantSelectionActivity" android:parentActivityName=".RestaurantListActivity" />
         <activity android:name=".AddRestaurantsActivity" android:parentActivityName=".RestaurantListActivity" />
+        <activity android:name=".SearchActivity" android:parentActivityName=".RestaurantListActivity" />
         <activity android:name=".AddRestaurantActivity" android:parentActivityName=".RestaurantSelectionActivity" />
         <activity android:name=".RestaurantActivity" android:parentActivityName=".RestaurantSelectionActivity" />
     </application>

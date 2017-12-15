@@ -9,7 +9,7 @@ import java.util.UUID;
 public class RestaurantDetails
     {
         private String id;
-        private String restaurantName;
+        private String restaurantName = "";
         private double restaurantRating;
         private String restaurantLocation;
         private String restaurantDetails;

@@ -2,8 +2,10 @@ package edu.chapman.cpsc356.restaurants;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,7 +14,10 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+
+import com.google.gson.Gson;
 
 
 /**
@@ -21,6 +26,8 @@ import android.widget.Button;
 public class RestaurantListFragment extends Fragment
     {
         private RestaurantListAdapter adapter;
+        private ImageButton search;
+        private EditText searchText;
 
         @Nullable
         @Override
@@ -40,6 +47,28 @@ public class RestaurantListFragment extends Fragment
 
             helper.attachToRecyclerView(restaurantsListView);
 
+            this.search = v.findViewById(R.id.search);
+            this.searchText = v.findViewById(R.id.search_text);
+
+            search.setOnClickListener(new View.OnClickListener()
+                {
+                    @Override
+                    public void onClick(View view)
+                    {
+                        if(!(searchText.getText().toString().equals("")))
+                        {
+                            RestaurantCollection.searchedText = searchText.getText().toString().toLowerCase();
+                            if(RestaurantCollection.getInstance().searchRestaurants().size()!=0)
+                            {
+                                Intent intent = new Intent(view.getContext(), SearchActivity.class);
+                                startActivity(intent);
+                            }
+                        }
+                    }
+                });
+
+
+
 
 
 
@@ -52,4 +81,6 @@ public class RestaurantListFragment extends Fragment
 
             this.adapter.notifyDataSetChanged();
         }
+
+
     }

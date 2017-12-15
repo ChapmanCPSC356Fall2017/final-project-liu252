@@ -59,6 +59,7 @@ public class AddRestaurantFragment extends Fragment
                         }
                         newRestaurant.setRestaurantLocation(newAddress.getText().toString());
                         newRestaurant.setRestaurantDetails(newDetails.getText().toString());
+
                         RestaurantCollection.getInstance().addRestaurant(newRestaurant);
                         RestaurantCollection.restaurantCount++;
                         Intent intent = new Intent(view.getContext(),RestaurantSelectionActivity.class);
